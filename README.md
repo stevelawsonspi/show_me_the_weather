@@ -1,6 +1,8 @@
 # Show me the Weather!
 
 Sample App to display the weather using Yahoo weather API
+- Just a initial repo right now, nothing to see yet
+
 
 ## Assumptions
 - Only using Yahoo to get weather info, so only handling their style of data.
