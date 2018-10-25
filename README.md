@@ -13,7 +13,7 @@ To get started with the app, clone the repo and then install the needed gems:
 $ bundle install
 ```
 
-Next, migrate the database and seed the date:
+Next, migrate the database and load the seed data:
 
 ```
 $ rails db:migrate
