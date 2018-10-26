@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_075751) do
+ActiveRecord::Schema.define(version: 2018_10_26_215046) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "yahoo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "weather_requests", force: :cascade do |t|
+    t.integer "location_id"
+    t.string "request_url"
+    t.datetime "request_start"
+    t.datetime "request_end"
+    t.float "request_duration"
+    t.string "returned_json"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_weather_requests_on_location_id"
   end
 
 end
