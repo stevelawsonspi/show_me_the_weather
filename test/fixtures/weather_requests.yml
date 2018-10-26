@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: one
+  request_url: MyString
+  request_start: 2018-10-26 21:50:46
+  request_end: 2018-10-26 21:50:46
+  request_duration: 1.5
+  returned_json: MyString
+  status: MyString
+
+two:
+  location: two
+  request_url: MyString
+  request_start: 2018-10-26 21:50:46
+  request_end: 2018-10-26 21:50:46
+  request_duration: 1.5
+  returned_json: MyString
+  status: MyString
