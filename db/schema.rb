@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_215046) do
+ActiveRecord::Schema.define(version: 2018_10_27_040208) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_10_26_215046) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "error_info"
     t.index ["location_id"], name: "index_weather_requests_on_location_id"
   end
 

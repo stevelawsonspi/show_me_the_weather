@@ -8,7 +8,8 @@ class WeatherRequestTest < ActiveSupport::TestCase
                                           request_end:      Time.now + 1.second,
                                           request_duration: 1.0,
                                           returned_json:    '{"some": "json"}',
-                                          status:           "Success")
+                                          status:           "Success",
+                                          error_info:       '')
   end
 
   test "should be valid" do

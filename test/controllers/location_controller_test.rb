@@ -6,5 +6,4 @@ class LocationControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h3", "Select location:"
   end
-
 end
