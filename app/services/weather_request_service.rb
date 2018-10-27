@@ -9,16 +9,28 @@ class WeatherRequestService
   end
 
   def run
-    call_weather_api
-    hash_data = try_json_to_hash                       if @weather_request.status == WeatherRequest::PROCESSING
-    validate_data(hash_data)                           if @weather_request.status == WeatherRequest::PROCESSING
-    @weather_request.status = WeatherRequest::SUCCESS  if @weather_request.status == WeatherRequest::PROCESSING
-    report_error                                       if @weather_request.status == WeatherRequest::ERROR
+    get_weather_info
+    report_error if processing_error?
     @weather_request.save
     @weather_request
   end
 
   private
+
+    def get_weather_info
+      call_weather_api
+      hash_data = try_json_to_hash                       if keep_processing?
+      validate_data(hash_data)                           if keep_processing?
+      @weather_request.status = WeatherRequest::SUCCESS  if keep_processing?
+    end
+
+    def keep_processing?
+      @weather_request.status == WeatherRequest::PROCESSING
+    end
+    
+    def processing_error?
+      @weather_request.status == WeatherRequest::ERROR
+    end
 
     def setup_request(location)
       request_url = Rails.configuration.yahoo_weather_url.sub('LOCATION_ID', location.yahoo_id)
@@ -33,6 +45,7 @@ class WeatherRequestService
       rescue => error
         @weather_request.assign_attributes(status: WeatherRequest::ERROR, error_info: error.to_s)
       end
+      
       if @weather_request.status == WeatherRequest::PROCESSING
         request_duration = request_end - request_start
         @weather_request.assign_attributes(request_start: request_start, request_end: request_end, request_duration: request_duration, returned_json: returned_json)
@@ -53,9 +66,9 @@ class WeatherRequestService
         @weather_request.assign_attributes(status: WeatherRequest::ERROR, error_info: 'Invalid JSON returned from API')
       end
     end
-    
+
     def report_error
       # TO-DO: Notify tech support (email, sms, log message, etc)
     end
-    
+
 end
