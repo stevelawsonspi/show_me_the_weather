@@ -6,6 +6,10 @@ Sample App to display the weather using Yahoo weather API
 
 ## Assumptions
 - Only using Yahoo to get weather info, so only handling their style of data.
+- Not sure if it's useful to save the weather info, so I just saved it as json (rather than normalised tables).  
+
+## Regrets
+- I am used to rspec but went with minitest. Took a while to get used it :)
 
 ## Getting started
 

@@ -9,6 +9,18 @@ class LocationTest < ActiveSupport::TestCase
     assert @location.valid?
   end
   
+  test "rejects blank name" do
+    @location.name = ''
+    refute       @location.valid?
+    refute_empty @location.errors[:name]
+  end
+  
+  test "rejects blank yahoo_id" do
+    @location.yahoo_id = ''
+    refute       @location.valid?
+    refute_empty @location.errors[:yahoo_id]
+  end
+  
   test "should be able to save" do
     assert_difference 'Location.count', 1 do
       @location.save
