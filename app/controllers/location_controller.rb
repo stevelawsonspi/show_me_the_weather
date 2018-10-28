@@ -20,7 +20,6 @@ class LocationController < ApplicationController
       @weather_request   = WeatherRequestService.new(@location).run
       @weather_info      = @weather_request.weather_info
       @weather_forecasts = @weather_request.weather_forecasts
-      puts "SLSLSL @weather_forecasts.class=#{@weather_forecasts.class}  @weather_forecasts.inspect=#{@weather_forecasts.inspect}"
     end
   
 end

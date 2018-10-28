@@ -11,7 +11,7 @@
               </thead>
               <tbody>
                 <% @locations.each do |location| %>
-                <tr>
+                <tr id="location-id-<%= location.id %>">
                   <td><%= link_to location.name, location %></td>
                 </tr>
                 <% end %>
