@@ -7,6 +7,14 @@ class WeatherRequest < ApplicationRecord
 
   validates :status, inclusion: { in: STATUSES }
 
+  def successful?
+    status == SUCCESS
+  end
+  
+  def error?
+    status = ERROR
+  end
+  
   def weather_info
     return nil if status != SUCCESS
     hash_data = returned_json_as_hash

@@ -1,0 +1,43 @@
+        <div class="col-md-6" id="weather-info">
+          <div class="card">
+            <div class="card-header bg-info"> Weather for <%= @location.name %>:  <%= @weather_info.weather_time %></div>
+            <div class="card-body bg-light">
+              <div class="row">
+                <div>Temperature: <%= @weather_info.temperature %></div>
+              </div>
+              <div class="row">
+                <div>Feels like: <%= @weather_info.feels_like %></div>
+              </div>
+              <div class="row">
+                <div>Sky: <%= @weather_info.description %></div>
+              </div>
+              <div class="row">
+                <div>Sunrise: <%= @weather_info.sunrise %></div>
+              </div>
+              <div class="row">
+                <div>Sunset: <%= @weather_info.sunset %></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered ">
+              <thead class="thead-dark">
+                <tr>
+                  <th colspan="2">Forecast</th>
+                  <th>High</th>
+                  <th>Low</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @weather_forecasts.each do |forecast| %>
+                <tr id="forecast-<%= forecast.date.delete(' ') %>">
+                  <td><%= forecast.day_name %></td>
+                  <td><%= forecast.description %></td>
+                  <td><%= forecast.temp_high %></td>
+                  <td><%= forecast.temp_low %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
