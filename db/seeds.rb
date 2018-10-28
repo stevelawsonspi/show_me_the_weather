@@ -8,3 +8,4 @@
 
 Location.create(name: 'Sydney',    yahoo_id: '1105779')
 Location.create(name: 'Melbourne', yahoo_id: '1103816')
+Location.create(name: 'Atlantis',  yahoo_id: 'ABCDEFG')
