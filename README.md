@@ -9,9 +9,9 @@ Sample App to display the weather using Yahoo weather API
 - Application should use models that will best represent the data being shown.
 - Each time the weather is checked, the results should be saved to the database. The user doesn’t need to be shown the results of previous weather checks, but they should be stored for future features which may be added to the application. 
 
-## Assumptions
+## Developer Info
 - Only using Yahoo to get weather info, so only handling their style of data.
-- Not sure if it's useful to save the weather in tables, so I just saved it as json.  The weather data is formatted into objects to make it easier to convert to tables if needed.
+- Not sure if it's useful to save the weather info in models, so I just saved it as json.  The weather info is formatted into objects to make it easier to convert to models if needed.
 
 ## Getting started
 
