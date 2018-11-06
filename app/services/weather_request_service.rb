@@ -46,9 +46,14 @@ class WeatherRequestService
         @weather_request.assign_attributes(status: WeatherRequest::ERROR, error_info: error.to_s)
       end
       
-      if @weather_request.status == WeatherRequest::PROCESSING
+      if keep_processing?
         request_duration = request_end - request_start
-        @weather_request.assign_attributes(request_start: request_start, request_end: request_end, request_duration: request_duration, returned_json: returned_json)
+        @weather_request.assign_attributes(
+          request_start:    request_start, 
+          request_end:      request_end, 
+          request_duration: request_duration, 
+          returned_json:    returned_json
+        )
       end
     end
 
