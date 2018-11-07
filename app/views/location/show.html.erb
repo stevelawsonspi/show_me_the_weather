@@ -1,0 +1,14 @@
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <%= render 'locations' %>
+        <% if @weather_request %>
+          <% if @weather_request.successful? %>
+            <%= render 'weather_info' %>
+          <% else %>
+            <%= render 'error_info' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>

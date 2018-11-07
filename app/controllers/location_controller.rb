@@ -5,9 +5,12 @@ class LocationController < ApplicationController
   end
   
   def show
-    @location = Location.find(params[:id])
-    get_weather_info if @location
-    render 'index'
+    @location = Location.find_by_id(params[:id])
+    if @location
+      get_weather_info
+    else
+      redirect_to root_path
+    end
   end
   
   private
