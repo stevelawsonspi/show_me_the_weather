@@ -25,8 +25,8 @@ class WeatherRequest < ApplicationRecord
     condition = hash_data.dig('query', 'results', 'channel', 'item', 'condition')
     OpenStruct.new(
       weather_time: condition['date'],
-      temperature:  fahrenheit_to_celsius(condition['temp'].to_f),
-      feels_like:   fahrenheit_to_celsius(wind['chill'].to_f),
+      temperature:  to_celsius(condition['temp'].to_f),
+      feels_like:   to_celsius(wind['chill'].to_f),
       description:  condition['text'],
       sunrise:      astronomy['sunrise'],
       sunset:       astronomy['sunset']
@@ -42,8 +42,8 @@ class WeatherRequest < ApplicationRecord
       forecast_array << OpenStruct.new(
         date:        forecast['date'],
         day_name:    forecast['day'],
-        temp_high:   fahrenheit_to_celsius(forecast['high'].to_f),
-        temp_low:    fahrenheit_to_celsius(forecast['low'].to_f),
+        temp_high:   to_celsius(forecast['high'].to_f),
+        temp_low:    to_celsius(forecast['low'].to_f),
         description: forecast['text']
       )
     end
@@ -56,8 +56,8 @@ class WeatherRequest < ApplicationRecord
       @hash_data ||= JSON.parse(returned_json)
     end
 
-    def fahrenheit_to_celsius(fahrenheit)
-      celsius = ((fahrenheit - 32) * 5.0 / 9.0).round
+    def to_celsius(fahrenheit)
+      Formulas.fahrenheit_to_celsius(fahrenheit)
     end
 
 end
