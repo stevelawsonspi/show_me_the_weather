@@ -1,31 +1,7 @@
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <div class="table-responsive">
-            <table class="table table-striped table-dark">
-              <thead>
-                <tr>
-                  <th scope="col">Locations</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @locations.each do |location| %>
-                <tr id="location-id-<%= location.id %>">
-                  <td><%= link_to location.name, location %></td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <% if @weather_request %>
-          <% if @weather_request.successful? %>
-            <%= render 'weather_info' %>
-          <% else %>
-            <%= render 'error_info' %>
-          <% end %>
-        <% end %>
+        <%= render 'locations' %>
       </div>
     </div>
   </div>
