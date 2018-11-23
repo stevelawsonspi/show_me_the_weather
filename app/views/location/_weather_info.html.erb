@@ -15,7 +15,7 @@
                     </tr>
                     <tr>
                       <td>Sky:</td>
-                      <td><%= @weather_info.description %></td>
+                      <td><%= @weather_info.weather_type %></td>
                     </tr>
                     <tr>
                       <td>Sunrise:</td>
@@ -40,12 +40,12 @@
                 </tr>
               </thead>
               <tbody>
-                <% @weather_forecasts.each do |forecast| %>
-                <tr id="forecast-<%= forecast.date.delete(' ') %>">
+                <% @weather_info.weather_forecasts.each do |forecast| %>
+                <tr id="forecast-<%= forecast.forecast_date.delete(' ') %>">
                   <td><%= forecast.day_name %></td>
-                  <td><%= forecast.description %></td>
-                  <td><%= forecast.temp_high %></td>
-                  <td><%= forecast.temp_low %></td>
+                  <td><%= forecast.weather_type %></td>
+                  <td><%= forecast.temperature_high %></td>
+                  <td><%= forecast.temperature_low %></td>
                 </tr>
                 <% end %>
               </tbody>

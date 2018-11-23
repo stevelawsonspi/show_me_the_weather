@@ -1,0 +1,88 @@
+
+earth_forecast1:
+  weather_info:     earth_one
+  forecast_date:    24 Oct 2018
+  day_name:         Wed
+  weather_type:     Mostly Cloudy
+  temperature_high: 18
+  temperature_low:  15
+
+earth_forecast2:
+  weather_info:     earth_one
+  forecast_date:    25 Oct 2018
+  day_name:         Thu
+  weather_type:     Partly Cloudy
+  temperature_high: 22
+  temperature_low:  13
+
+earth_forecast3:
+  weather_info:     earth_one
+  forecast_date:    26 Oct 2018
+  day_name:         Fri
+  weather_type:     Mostly Sunny
+  temperature_high: 21
+  temperature_low:  13
+
+earth_forecast4:
+  weather_info:     earth_one
+  forecast_date:    27 Oct 2018
+  day_name:         Sat
+  weather_type:     Partly Cloudy
+  temperature_high: 24
+  temperature_low:  13
+
+earth_forecast5:
+  weather_info:     earth_one
+  forecast_date:    28 Oct 2018
+  day_name:         Sun
+  weather_type:     Showers
+  temperature_high: 18
+  temperature_low:  12
+
+earth_forecast6:
+  weather_info:     earth_one
+  forecast_date:    29 Oct 2018
+  day_name:         Mon
+  weather_type:     Mostly Cloudy
+  temperature_high: 23
+  temperature_low:  11
+
+earth_forecast7:
+  weather_info:     earth_one
+  forecast_date:    29 Oct 2018
+  day_name:         Mon
+  weather_type:     Mostly Cloudy
+  temperature_high: 23
+  temperature_low:  11
+  
+earth_forecast8:
+  weather_info:     earth_one
+  forecast_date:    30 Oct 2018
+  day_name:         Tue
+  weather_type:     Sunny
+  temperature_high: 26
+  temperature_low:  11
+
+earth_forecast9:
+  weather_info:     earth_one
+  forecast_date:    31 Oct 2018
+  day_name:         Wed
+  weather_type:     Mostly Sunny
+  temperature_high: 25
+  temperature_low:  13
+
+earth_forecast10:
+  weather_info:     earth_one
+  forecast_date:    01 Nov 2018
+  day_name:         Thu
+  weather_type:     Thunderstorm
+  temperature_high: 27
+  temperature_low:  16
+
+earth_forecast11:
+  weather_info:     earth_one
+  forecast_date:    02 Nov 2018
+  day_name:         Fri
+  weather_type:     Mostly Cloudy
+  temperature_high: 31
+  temperature_low:  19

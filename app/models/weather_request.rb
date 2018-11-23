@@ -1,5 +1,6 @@
 class WeatherRequest < ApplicationRecord
   belongs_to :location
+  has_one    :weather_info
 
   STATUSES = [
     PROCESSING = 'Processing',
@@ -16,48 +17,5 @@ class WeatherRequest < ApplicationRecord
   def error?
     status == ERROR
   end
-  
-  def weather_info
-    return nil if status != SUCCESS
-    hash_data = returned_json_as_hash
-    wind      = hash_data.dig('query', 'results', 'channel', 'wind')
-    astronomy = hash_data.dig('query', 'results', 'channel', 'astronomy')
-    condition = hash_data.dig('query', 'results', 'channel', 'item', 'condition')
-    OpenStruct.new(
-      weather_time: condition['date'],
-      temperature:  to_celsius(condition['temp'].to_f),
-      feels_like:   to_celsius(wind['chill'].to_f),
-      description:  condition['text'],
-      sunrise:      astronomy['sunrise'],
-      sunset:       astronomy['sunset']
-    )
-  end
-
-  def weather_forecasts
-    return [] if status != SUCCESS
-    hash_data = returned_json_as_hash
-    forecasts = hash_data.dig('query', 'results', 'channel', 'item', 'forecast')
-    forecast_array = []
-    forecasts.each do |forecast|
-      forecast_array << OpenStruct.new(
-        date:        forecast['date'],
-        day_name:    forecast['day'],
-        temp_high:   to_celsius(forecast['high'].to_f),
-        temp_low:    to_celsius(forecast['low'].to_f),
-        description: forecast['text']
-      )
-    end
-    forecast_array
-  end
-
-  private
-
-    def returned_json_as_hash
-      @hash_data ||= JSON.parse(returned_json)
-    end
-
-    def to_celsius(fahrenheit)
-      Formulas.fahrenheit_to_celsius(fahrenheit)
-    end
 
 end

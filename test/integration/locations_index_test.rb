@@ -59,7 +59,7 @@ class LocationsIndexTest < ActionDispatch::IntegrationTest
     WeatherRequest.any_instance.expects(:weather_info).returns(weather_info)
     WeatherRequest.any_instance.expects(:weather_forecasts).returns(weather_forecasts)
     get location_path(location)
-    assert_template 'location/index'
+    assert_template 'location/show'
     Location.all.each do |location|
       assert_select "tr#location-id-#{location.id}", location.name
     end

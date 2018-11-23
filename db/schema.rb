@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_040208) do
+ActiveRecord::Schema.define(version: 2018_11_13_062311) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "yahoo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "weather_forecasts", force: :cascade do |t|
+    t.integer "weather_info_id"
+    t.string "forecast_date"
+    t.string "day_name"
+    t.string "weather_type"
+    t.integer "temperature_high"
+    t.integer "temperature_low"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weather_info_id"], name: "index_weather_forecasts_on_weather_info_id"
+  end
+
+  create_table "weather_infos", force: :cascade do |t|
+    t.integer "weather_request_id"
+    t.string "weather_time"
+    t.string "weather_type"
+    t.integer "temperature"
+    t.integer "feels_like"
+    t.string "sunrise"
+    t.string "sunset"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weather_request_id"], name: "index_weather_infos_on_weather_request_id"
   end
 
   create_table "weather_requests", force: :cascade do |t|

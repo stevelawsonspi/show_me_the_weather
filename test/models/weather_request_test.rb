@@ -73,7 +73,7 @@ class WeatherRequestTest < ActiveSupport::TestCase
       OpenStruct.new(date: '02 Nov 2018', day_name: 'Fri', temp_high: 31, temp_low: 19, description: 'Mostly Cloudy')
     ]
     Net::HTTP.expects(:get).returns(@json_valid)
-    weather_request = WeatherRequestService.new(@location).run
+    weather_request   = WeatherRequestService.new(@location).run
     weather_forecasts = weather_request.weather_forecasts
     weather_forecasts.each_with_index do |forecast, index|
       assert_equal forecast.date,        expect_forecasts[index].date,        "forecast index = #{index}"
@@ -82,5 +82,10 @@ class WeatherRequestTest < ActiveSupport::TestCase
       assert_equal forecast.temp_low,    expect_forecasts[index].temp_low,    "forecast index = #{index}"
       assert_equal forecast.description, expect_forecasts[index].description, "forecast index = #{index}"
     end
+    
+    puts "weather_infos(:earth_one).weather_forecasts= #{weather_infos(:earth_one).weather_forecasts}"
+    
+    
+    
   end
 end
