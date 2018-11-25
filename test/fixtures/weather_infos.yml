@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-earth_one:
+good_info:
   weather_request: good
   weather_time:    Wed, 24 Oct 2018 06:00 PM AEDT
   weather_type:    Cloudy
