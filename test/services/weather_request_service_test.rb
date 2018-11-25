@@ -73,7 +73,7 @@ class WeatherRequestServiceTest < ActiveSupport::TestCase
     assert_difference 'WeatherRequest.count', 1 do
       @weather_request = WeatherRequestService.new(@location).run
     end
-    assert_equal @weather_request.returned_json, @invalid_json
+    assert_equal @weather_request.returned_json, @json_invalid
     assert_equal @weather_request.status,        WeatherRequest::ERROR
   end
   
