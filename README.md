@@ -11,7 +11,6 @@ Sample App to display the weather using Yahoo weather API
 
 ## Developer Info
 - Only using Yahoo to get weather info, so only handling their style of data.
-- Not sure if it's useful to save the weather info in models, so I just saved it as json.  The weather info is formatted into objects to make it easier to convert to models if needed.
 
 ## Getting started
 
