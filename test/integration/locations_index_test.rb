@@ -15,7 +15,6 @@ class LocationsIndexTest < ActionDispatch::IntegrationTest
     good_request = weather_requests(:good)
     WeatherRequestService.expects(:new).returns(good_request)
     WeatherRequest.any_instance.expects(:run).returns(good_request)
-    WeatherRequest.any_instance.expects(:weather_info).returns(good_request.weather_info)
     get location_path(location)
     assert_template 'location/show'
     Location.all.each do |location|
@@ -24,18 +23,15 @@ class LocationsIndexTest < ActionDispatch::IntegrationTest
     assert_select "div#weather-info"
     assert_select "div#error-info", false
     weather_forecasts.each do |forecast|
-      assert_select "tr#forecast-#{forecast.date.delete(' ')}"
+      assert_select "tr#forecast-#{forecast.id}"
     end
   end
   
   test "location error" do
     location = Location.first
-    bad_request = WeatherRequest.find_by_status(WeatherRequest::ERROR)
-    weather_info = nil
-    weather_forecasts = []
+    bad_request = weather_requests(:bad_location_not_found)
     WeatherRequestService.expects(:new).returns(bad_request)
     WeatherRequest.any_instance.expects(:run).returns(bad_request)
-    WeatherRequest.any_instance.expects(:weather_info).returns(weather_info)
     get location_path(location)
     assert_template 'location/show'
     Location.all.each do |location|

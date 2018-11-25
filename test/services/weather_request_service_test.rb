@@ -3,11 +3,11 @@ require 'test_helper'
 class WeatherRequestServiceTest < ActiveSupport::TestCase
 
   def setup
-    @location = Location.first
-    @json_valid = weather_requests(:good).returned_json
-    @json_from_bad_location_id = '{"query":{"count":1,"created":"2018-10-27T06:13:26Z","lang":"en-AU","results":{"channel":{"units":{"distance":"mi","pressure":"in","speed":"mph","temperature":"F"}}}}}'
-    @json_from_location_not_found = '{"error":{"lang":"en-US","description":"Invalid identfier asdfghjkl. me AND me.ip are the only supported identifier in this context"}}'
-    @invalid_json = '{ "really bad" { "json"'
+    @location                     = Location.first
+    @json_valid                   = weather_requests(:good).returned_json
+    @json_invalid                 = weather_requests(:bad_invalid_json).returned_json
+    @json_from_bad_location_id    = weather_requests(:bad_invalid_location_id).returned_json
+    @json_from_location_not_found = weather_requests(:bad_location_not_found).returned_json
   end
 
   test "valid request" do
@@ -69,7 +69,7 @@ class WeatherRequestServiceTest < ActiveSupport::TestCase
   end
   
   test "handles invalid json data" do
-    Net::HTTP.expects(:get).returns(@invalid_json)
+    Net::HTTP.expects(:get).returns(@json_invalid)
     assert_difference 'WeatherRequest.count', 1 do
       @weather_request = WeatherRequestService.new(@location).run
     end

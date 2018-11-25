@@ -41,7 +41,7 @@
               </thead>
               <tbody>
                 <% @weather_info.weather_forecasts.each do |forecast| %>
-                <tr id="forecast-<%= forecast.forecast_date.delete(' ') %>">
+                <tr id="forecast-<%= forecast.id %>">
                   <td><%= forecast.day_name %></td>
                   <td><%= forecast.weather_type %></td>
                   <td><%= forecast.temperature_high %></td>
