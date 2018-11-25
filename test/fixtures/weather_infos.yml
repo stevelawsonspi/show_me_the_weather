@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+good_info:
+  weather_request: good
+  weather_time:    Wed, 24 Oct 2018 06:00 PM AEDT
+  weather_type:    Cloudy
+  temperature:     17
+  feels_like:      16
+  sunrise:         6:4 am
+  sunset:          7:17 pm

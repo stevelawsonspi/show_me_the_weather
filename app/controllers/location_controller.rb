@@ -22,7 +22,6 @@ class LocationController < ApplicationController
     def get_weather_info
       @weather_request   = WeatherRequestService.new(@location).run
       @weather_info      = @weather_request.weather_info
-      @weather_forecasts = @weather_request.weather_forecasts
     end
   
 end
