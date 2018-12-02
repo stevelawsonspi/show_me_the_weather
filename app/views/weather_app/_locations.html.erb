@@ -9,7 +9,7 @@
               <tbody>
                 <% @locations.each do |location| %>
                 <tr id="location-id-<%= location.id %>">
-                  <td><%= link_to location.name, location %></td>
+                  <td><%= link_to location.name, "/#{location.id}" %></td>
                 </tr>
                 <% end %>
               </tbody>

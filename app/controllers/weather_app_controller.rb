@@ -1,4 +1,4 @@
-class LocationController < ApplicationController
+class WeatherAppController < ApplicationController
   before_action :get_locations
   
   def index

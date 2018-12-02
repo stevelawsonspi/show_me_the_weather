@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'location#index'
-  resources :location, only: [:index, :show]
+  root 'weather_app#index'
+  get '/:id', to: 'weather_app#show'
 end
