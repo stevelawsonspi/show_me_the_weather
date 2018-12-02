@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Locations</h1>
+
+<div class="table-responsive">
+  <table class="table table-bordered ">
+    <thead class="thead-dark">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Yahoo Id</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.id %></td>
+          <td><%= link_to location.name, location %></td>
+          <td><%= location.yahoo_id %></td>
+          <td>
+            <%= link_to 'Edit', edit_location_path(location) %>
+            <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Location', new_location_path %>
