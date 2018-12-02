@@ -1,10 +1,11 @@
 require 'test_helper'
 
-class LocationsIndexTest < ActionDispatch::IntegrationTest
+class WeatherAppIndexTest < ActionDispatch::IntegrationTest
 
   test "index (root)" do
     get root_url
-    assert_template 'location/index'
+    assert_response :success
+    assert_template 'weather_app/index'
     Location.all.each do |location|
       assert_select "tr#location-id-#{location.id}", location.name
     end
@@ -15,8 +16,9 @@ class LocationsIndexTest < ActionDispatch::IntegrationTest
     good_request = weather_requests(:good)
     WeatherRequestService.expects(:new).returns(good_request)
     WeatherRequest.any_instance.expects(:run).returns(good_request)
-    get location_path(location)
-    assert_template 'location/show'
+    get "/#{location.id}"
+    assert_response :success
+    assert_template 'weather_app/show'
     Location.all.each do |location|
       assert_select "tr#location-id-#{location.id}", location.name
     end
@@ -32,8 +34,9 @@ class LocationsIndexTest < ActionDispatch::IntegrationTest
     bad_request = weather_requests(:bad_location_not_found)
     WeatherRequestService.expects(:new).returns(bad_request)
     WeatherRequest.any_instance.expects(:run).returns(bad_request)
-    get location_path(location)
-    assert_template 'location/show'
+    get "/#{location.id}"
+    assert_response :success
+    assert_template 'weather_app/show'
     Location.all.each do |location|
       assert_select "tr#location-id-#{location.id}", location.name
     end
